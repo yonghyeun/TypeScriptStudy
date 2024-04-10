@@ -1,6 +1,7 @@
-var leedongdong = {
-    name: 'lee',
-};
-var greeting = function (person) {
-    console.log("\uC548\uB155\uD558\uC138\uC694 \uC800\uB294 ".concat(person.name, "\uC785\uB2C8\uB2E4."));
-};
+var Direction;
+(function (Direction) {
+  Direction[(Direction['UP'] = 1)] = 'UP';
+  Direction[(Direction['DOWN'] = 2)] = 'DOWN';
+  Direction[(Direction['LEFT'] = 3)] = 'LEFT';
+  Direction[(Direction['RIGHT'] = 4)] = 'RIGHT';
+})(Direction || (Direction = {}));
