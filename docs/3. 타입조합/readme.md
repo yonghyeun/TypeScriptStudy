@@ -536,3 +536,4 @@ const cExample: SubSet<Example> = { c: true };
 > ![alt text](image.png)
 
 이러한 맵드 타입은 주로 타입을 재사용 할 떄 자주 사용된다.
+
