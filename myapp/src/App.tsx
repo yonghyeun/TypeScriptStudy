@@ -1,7 +1,7 @@
 import './App.css';
 import useFetching from './useFetching';
 function App() {
-  const data = useFetching('posts');
+  const data = useFetching('todos');
 
   return (
     <ul>
