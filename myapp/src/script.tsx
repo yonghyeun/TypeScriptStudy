@@ -1,34 +1,18 @@
-type Handlers = {
-  onClick?: () => void;
-  onMouseMove?: () => void;
+const theme = {
+  color: {
+    default: 'grey',
+    red: '#F45452',
+    blue: '#1A7CFF',
+    green: '#0C952A',
+  },
 };
 
-type Content = {
-  title: string;
-  content: string;
-  onClick?: () => void;
-  onMouseMove?: () => void;
+type Props = { color: keyof typeof theme.color };
+
+const SomeComponent: React.FC<Props> = ({ color }) => {
+  return <div style={{ color }}></div>;
 };
 
-const CardContent: React.FC<Content> = ({ title, content }) => {
-  return (
-    <div>
-      <h1>{title}</h1>
-      <p>{content}</p>
-    </div>
-  );
-};
-
-const CardWitHandler: React.FC<Content & Pick<Handlers, 'onClick'>> = ({
-  title,
-  content,
-  onClick,
-}) => {
-  return (
-    <div>
-      <h1>{title}</h1>
-      <p>{content}</p>
-      <button onClick={onClick}></button>
-    </div>
-  );
+const App = () => {
+  return <SomeComponent color='red' />;
 };

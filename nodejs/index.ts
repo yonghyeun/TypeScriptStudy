@@ -1,18 +1,15 @@
-type Card = {
-  cardId: string;
+type Product = {
+  productId: number;
+  productName: string;
 };
 
-type Cash = {
-  amount: number;
-};
-
-type One<T> = { [K in keyof T]: Record<K, T[K]> }[keyof T];
-type ExcludeOne<T> = {
-  [K in keyof T]: Partial<Record<Exclude<keyof T, K>, undefined>>;
-}[keyof T];
-
-type PickOne<T> = One<T> & ExcludeOne<T>;
-
-const Pay = (payment: PickOne<Card & Cash>) => {
-  // payment 를 이용해 결제를 하는 어떤 로직
-};
+class ProductFetcher {
+  static async operator(productId: number): Promise<Product[] | null> {
+    try {
+      const response = await fetch(`/shop/productId=${productId}`);
+      return await response.json(); // Response 객체는 Product[] 타입이라고 가정
+    } catch (e) {
+      return null;
+    }
+  }
+}
