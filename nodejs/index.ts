@@ -1,3 +1,18 @@
-// const promise1 = new Promise((res) => res(1)).then(() => 'a').then(() => true);
+type Card = {
+  cardId: string;
+};
 
-const promise1 = Promise.resolve(Promise.resolve(Promise.resolve(true)));
+type Cash = {
+  amount: number;
+};
+
+type One<T> = { [K in keyof T]: Record<K, T[K]> }[keyof T];
+type ExcludeOne<T> = {
+  [K in keyof T]: Partial<Record<Exclude<keyof T, K>, undefined>>;
+}[keyof T];
+
+type PickOne<T> = One<T> & ExcludeOne<T>;
+
+const Pay = (payment: PickOne<Card & Cash>) => {
+  // payment 를 이용해 결제를 하는 어떤 로직
+};
