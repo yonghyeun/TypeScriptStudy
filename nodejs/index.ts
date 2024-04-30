@@ -1,15 +1,7 @@
-type Product = {
-  productId: number;
-  productName: string;
-};
+type MenuKeys = 'name' | 'price' | 'recommend';
+type Menu = Partial<Record<MenuKeys, string | number>>;
 
-class ProductFetcher {
-  static async operator(productId: number): Promise<Product[] | null> {
-    try {
-      const response = await fetch(`/shop/productId=${productId}`);
-      return await response.json(); // Response 객체는 Product[] 타입이라고 가정
-    } catch (e) {
-      return null;
-    }
-  }
-}
+const menuList: Menu[] = [
+  { name: '된장찌개', price: 12000, recommend: '졸마탱' },
+  { name: '김치찌개', price: 9000 },
+];
